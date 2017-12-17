@@ -1,7 +1,7 @@
 # Docker Container for Logitech Media Server
 
 This is a Docker image for running the Logitech Media Server package
-(aka SqueezeboxServer).
+(aka SqueezeboxServer) on the Raspberry Pi.
 
 Run Directly:
 
@@ -13,7 +13,7 @@ Run Directly:
                -v /etc/localtime:/etc/localtime:ro \
                -v <local-state-dir>:/srv/squeezebox \
                -v <audio-dir>:/srv/music \
-               larsks/logitech-media-server
+               schamp/rpi-logitech-media-server
 
 
 The web interface runs on port 9000.  If you also want this available
