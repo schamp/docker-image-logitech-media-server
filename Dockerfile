@@ -1,13 +1,15 @@
-FROM ubuntu:xenial
-MAINTAINER Lars Kellogg-Stedman <lars@oddbit.com>
+FROM resin/rpi-raspbian
+MAINTAINER Andrew Schamp <schamp@gmail.com>
+# derived from https://github.com/larsks/docker-image-logitech-media-server
+# modified for Raspberry Pi
 
 ENV SQUEEZE_VOL /srv/squeezebox
 ENV LANG C.UTF-8
 ENV DEBIAN_FRONTEND noninteractive
-ENV PACKAGE_VERSION_URL=http://www.mysqueezebox.com/update/?version=7.9.0&revision=1&geturl=1&os=deb
+ENV PACKAGE_VERSION_URL=http://www.mysqueezebox.com/update/?version=7.9.0&revision=1&geturl=1&os=debarm
 
 RUN apt-get update && \
-	apt-get -y install curl wget faad flac lame sox libio-socket-ssl-perl && \
+	apt-get -y install curl wget faad flac lame sox libio-socket-ssl-perl libsox-fmt-all libflac-dev libfaad2 libmad0 && \
 	apt-get clean
 
 RUN url=$(curl "$PACKAGE_VERSION_URL" | sed 's/_all\.deb/_amd64\.deb/') && \
